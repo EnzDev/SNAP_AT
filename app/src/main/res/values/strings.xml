@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SNAP_AT</string>
+    <string name="domgfi">mail.address\@gfi.fr</string>
+    <string name="go">SUIVANT</string>
+    <string name="loginLabel">Entrez votre adresse mail:</string>
+    <string name="action_search">search</string>
+    <string name="action_add">add</string>
+    <string name="openLabel">Open</string>
+    <string name="lostLabel">Lost</string>
+    <string name="winLabel">Win</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
