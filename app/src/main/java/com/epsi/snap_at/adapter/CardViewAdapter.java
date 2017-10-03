@@ -36,6 +36,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
 	@Override
 	public int getItemCount() {
-		return 0;
+		return cardList.size();
 	}
 }
