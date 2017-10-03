@@ -5,6 +5,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.R;
@@ -33,5 +34,9 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 		titre.setText(card.getTitre());
 		itemLabel.setText(card.getItemLabel());
 		dateLast.setText(card.getDateLast());
+
+		itemView.findViewById(R.id.card).setOnClickListener((v) -> {
+			Toast.makeText(v.getContext(), card.getTitre(), Toast.LENGTH_SHORT).show();
+		});
 	}
 }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1025593091158",
+    "firebase_url": "https://snapat-263aa.firebaseio.com",
+    "project_id": "snapat-263aa",
+    "storage_bucket": "snapat-263aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025593091158:android:a35ea744c8bcf945",
+        "android_client_info": {
+          "package_name": "com.epsi.snap_at"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025593091158-2pi4okov8ef8k89b02c6k9u41f5fndla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-DN387yxsD7yT_Mq50r7YSRhz6jIq2Zg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

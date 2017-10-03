@@ -27,7 +27,7 @@ public class ViewLogin extends AppCompatActivity {
 			settings.edit().putBoolean("isRegistered", false).commit();
 		else {
 			startActivity(new Intent(this, ViewMain.class));
-			finishActivity(0);
+			finish();
 		}
 
 
@@ -69,6 +69,6 @@ public class ViewLogin extends AppCompatActivity {
 				.commit();
 
 		startActivity(new Intent(this, ViewMain.class));
-		finishActivity(0);
+		finish();
 	}
 }

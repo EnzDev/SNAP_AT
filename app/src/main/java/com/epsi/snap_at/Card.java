@@ -6,10 +6,10 @@ package com.epsi.snap_at;
 
 public class Card {
 	private String titre;
-	private int id;
 	private int color;
 	private String itemLabel;
 	private String dateLast;
+	private int id;
 
 	public Card(String titre, int id, int color, String itemLabel, String dateLast) {
 		this.titre = titre;
