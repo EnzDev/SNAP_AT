@@ -1,61 +1,67 @@
 package com.epsi.snap_at;
 
+import android.content.Context;
+
+import java.util.Calendar;
+
 /**
  * Created by Ptit-Biscuit on 03/10/2017.
  */
 
 public class Card {
-	private String titre;
+	private String title;
 	private int color;
-	private String itemLabel;
-	private String dateLast;
-	private int id;
+	private int globalItemNumber;
+	private int selfItemNumber;
+	private Calendar dateLast;
+	private StatusID statusId;
 
-	public Card(String titre, int id, int color, String itemLabel, String dateLast) {
-		this.titre = titre;
-		this.id = id;
-		this.color = color;
-		this.itemLabel = itemLabel;
+	public Card(int globalItemNumber, int selfItemNumber, Calendar dateLast, StatusID statusId, Context context) {
+		this.globalItemNumber = globalItemNumber;
+		this.selfItemNumber = selfItemNumber;
 		this.dateLast = dateLast;
+		this.statusId = statusId;
+
+		switch (statusId) {
+			case OPEN:
+				this.title = context.getResources().getString(R.string.openLabel);
+				this.color = context.getResources().getColor(R.color.open);
+				break;
+			case WIN:
+				this.title = context.getResources().getString(R.string.winLabel);
+				this.color = context.getResources().getColor(R.color.win);
+				break;
+			case LOST:
+				this.title = context.getResources().getString(R.string.lostLabel);
+				this.color = context.getResources().getColor(R.color.lost);
+				break;
+			default:
+				this.title = "";
+				this.color = context.getResources().getColor(android.R.color.transparent);
+		}
 	}
 
-	public String getTitre() {
-		return titre;
-	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public String getTitle() {
+		return title;
 	}
 
 	public int getColor() {
 		return color;
 	}
 
-	public void setColor(int color) {
-		this.color = color;
+	public int getGlobalItemNumber() {
+		return globalItemNumber;
 	}
 
-	public String getItemLabel() {
-		return itemLabel;
+	public int getSelfItemNumber() {
+		return selfItemNumber;
 	}
 
-	public void setItemLabel(String itemLabel) {
-		this.itemLabel = itemLabel;
-	}
-
-	public String getDateLast() {
+	public Calendar getDateLast() {
 		return dateLast;
 	}
 
-	public void setDateLast(String dateLast) {
-		this.dateLast = dateLast;
+	public StatusID getStatusId() {
+		return statusId;
 	}
 }

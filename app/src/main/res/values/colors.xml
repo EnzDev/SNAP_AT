@@ -9,4 +9,8 @@
     <color name="grey">#ed817f7f</color>
     <color name="black">#000</color>
     <color name="light">#aaffffff</color>
+
+    <color name="open">@color/blue</color>
+    <color name="win">@color/green</color>
+    <color name="lost">@color/red</color>
 </resources>

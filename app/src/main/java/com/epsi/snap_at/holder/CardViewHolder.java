@@ -10,33 +10,39 @@ import android.widget.Toast;
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.R;
 
+import java.text.DateFormat;
+
 /**
  * Created by Ptit-Biscuit on 03/10/2017.
  */
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
-	private TextView titre;
-	private int color;
-	private TextView itemLabel;
-	private TextView dateLast;
+    private TextView tvTitle;
 
-	public CardViewHolder(View itemView) {
-		super(itemView);
 
-		titre = (TextView) itemView.findViewById(R.id.titre);
-		color = itemView.findViewById(R.id.card).getSolidColor();
-		itemLabel = (TextView) itemView.findViewById(R.id.itemLabel);
-		dateLast = (TextView) itemView.findViewById(R.id.dateLast);
-	}
+    private TextView tvGlobalItemNumber;
+    private TextView tvSelfItemNumber;
+    private TextView tvDateLast;
 
-	public void bind(Card card) {
-		((CardView) itemView.findViewById(R.id.card)).setCardBackgroundColor(card.getColor());
-		titre.setText(card.getTitre());
-		itemLabel.setText(card.getItemLabel());
-		dateLast.setText(card.getDateLast());
+    public CardViewHolder(View itemView) {
+        super(itemView);
 
-		itemView.findViewById(R.id.card).setOnClickListener((v) -> {
-			Toast.makeText(v.getContext(), card.getTitre(), Toast.LENGTH_SHORT).show();
-		});
-	}
+        tvTitle = (TextView) itemView.findViewById(R.id.card_title);
+        tvGlobalItemNumber = (TextView) itemView.findViewById(R.id.card_totalnumber);
+        tvSelfItemNumber = (TextView) itemView.findViewById(R.id.card_creatednumber);
+        tvDateLast = (TextView) itemView.findViewById(R.id.card_datelast);
+    }
+
+    public void bind(Card card) {
+        ((CardView) itemView.findViewById(R.id.card)).setCardBackgroundColor(card.getColor());
+        tvTitle.setText(card.getTitle());
+        tvGlobalItemNumber.setText(card.getGlobalItemNumber() + " " + tvGlobalItemNumber.getResources().getString(R.string.global));
+        tvSelfItemNumber.setText(card.getSelfItemNumber() + " " + tvGlobalItemNumber.getResources().getString(R.string.created));
+        tvDateLast.setText(
+                DateFormat
+                        .getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, tvDateLast.getResources().getConfiguration().locale)
+                        .format(card.getDateLast().getTime()));
+
+        itemView.findViewById(R.id.card).setOnClickListener(v -> Toast.makeText(v.getContext(), card.getTitle(), Toast.LENGTH_SHORT).show());
+    }
 }

@@ -17,54 +17,54 @@ import java.util.List;
 
 public class ViewMain extends AppCompatActivity {
 
-	private RecyclerView rv;
-	private List<Card> cards = new ArrayList<>();
+    private RecyclerView rv;
+    private List<Card> cards = new ArrayList<>();
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_main);
 
-		addCards();
+        addCards();
 
-		rv = (RecyclerView) findViewById(R.id.recyclerView);
-		rv.setLayoutManager(new LinearLayoutManager(this));
-		rv.setAdapter(new CardViewAdapter(cards));
-	}
+        rv = (RecyclerView) findViewById(R.id.recyclerView);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(new CardViewAdapter(cards));
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		//ajoute les entrées de main_menu à l'ActionBar
-		getMenuInflater().inflate(R.menu.main_menu, menu);
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //ajoute les entrées de main_menu à l'ActionBar
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
-	//gère le click sur une action de l'ActionBar
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()){
-			case R.id.action_search:
-				search();
-				return true;
-			case R.id.action_add:
-				add();
-				return true;
-		}
+    //gère le click sur une action de l'ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                search();
+                return true;
+            case R.id.action_add:
+                add();
+                return true;
+        }
 
-		return super.onOptionsItemSelected(item);
-	}
+        return super.onOptionsItemSelected(item);
+    }
 
-	private void addCards() {
-		cards.add(new Card("Open", 0, getResources().getColor(R.color.blue), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
-		cards.add(new Card("Win", 1, getResources().getColor(R.color.green), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
-		cards.add(new Card("Lost", 2, getResources().getColor(R.color.red), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
-	}
+    private void addCards() {
+        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.OPEN, this));
+        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.WIN, this));
+        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.LOST, this));
+    }
 
-	private void add() {
-		Toast.makeText(this, "ajout d'une fiche client", Toast.LENGTH_SHORT).show();
-	}
+    private void add() {
+        Toast.makeText(this, "ajout d'une fiche client", Toast.LENGTH_SHORT).show();
+    }
 
-	private void search() {
-		Toast.makeText(this, "recherche", Toast.LENGTH_SHORT).show();
-	}
+    private void search() {
+        Toast.makeText(this, "recherche", Toast.LENGTH_SHORT).show();
+    }
 }
