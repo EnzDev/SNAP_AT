@@ -6,12 +6,14 @@ package com.epsi.snap_at;
 
 public class Card {
 	private String titre;
+	private int id;
 	private int color;
 	private String itemLabel;
 	private String dateLast;
 
-	public Card(String titre, int color, String itemLabel, String dateLast) {
+	public Card(String titre, int id, int color, String itemLabel, String dateLast) {
 		this.titre = titre;
+		this.id = id;
 		this.color = color;
 		this.itemLabel = itemLabel;
 		this.dateLast = dateLast;
@@ -23,6 +25,14 @@ public class Card {
 
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getColor() {

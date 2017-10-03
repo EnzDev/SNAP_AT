@@ -55,9 +55,9 @@ public class ViewMain extends AppCompatActivity {
 	}
 
 	private void addCards() {
-		cards.add(new Card("Open", R.color.blue, "0 items - 0 created", Calendar.getInstance().getTime().toString()));
-		cards.add(new Card("Win", R.color.green, "0 items - 0 created", Calendar.getInstance().getTime().toString()));
-		cards.add(new Card("Lost", R.color.red, "0 items - 0 created", Calendar.getInstance().getTime().toString()));
+		cards.add(new Card("Open", 0, getResources().getColor(R.color.blue), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
+		cards.add(new Card("Win", 1, getResources().getColor(R.color.green), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
+		cards.add(new Card("Lost", 2, getResources().getColor(R.color.red), "0 items - 0 created", Calendar.getInstance().getTime().toString()));
 	}
 
 	private void add() {
