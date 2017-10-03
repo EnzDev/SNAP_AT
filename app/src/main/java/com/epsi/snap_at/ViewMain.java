@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import drawable.Card;
 
 public class ViewMain extends AppCompatActivity {
 
@@ -14,17 +17,26 @@ public class ViewMain extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_main);
 
-		CardView cvOpen = (CardView) findViewById(R.id.cvOpen);
-		cvOpen.setRadius(3f);
-		cvOpen.setCardBackgroundColor(getResources().getColor(R.color.blue));
+		Card cvOpen = new Card();
+		cvOpen.newInstance();
+		CardView cvOpenCard = ((CardView) cvOpen.getActivity().findViewById(R.id.cardView));
+		cvOpenCard.setRadius(4f);
+		cvOpenCard.setCardBackgroundColor(getResources().getColor(R.color.blue));
+		((TextView) cvOpen.getActivity().findViewById(R.id.titre)).setText(R.string.openLabel);
 
-		CardView cvWin = (CardView) findViewById(R.id.cvWin);
-		cvWin.setRadius(3f);
-		cvWin.setCardBackgroundColor(getResources().getColor(R.color.green));
+		Card cvWin = new Card();
+		cvWin.newInstance();
+		CardView cvWinCard = ((CardView) cvWin.getActivity().findViewById(R.id.cardView));
+		cvWinCard.setRadius(4f);
+		cvWinCard.setCardBackgroundColor(getResources().getColor(R.color.green));
+		((TextView) cvWin.getActivity().findViewById(R.id.titre)).setText(R.string.winLabel);
 
-		CardView cvLost = (CardView) findViewById(R.id.cvLost);
-		cvLost.setRadius(3f);
-		cvLost.setCardBackgroundColor(getResources().getColor(R.color.red));
+		Card cvLost = new Card();
+		cvLost.newInstance();
+		CardView cvLostCard = ((CardView) cvLost.getActivity().findViewById(R.id.cardView));
+		cvLostCard.setRadius(4f);
+		cvLostCard.setCardBackgroundColor(getResources().getColor(R.color.red));
+		((TextView) cvLost.getActivity().findViewById(R.id.titre)).setText(R.string.lostLabel);
 	}
 
 	@Override

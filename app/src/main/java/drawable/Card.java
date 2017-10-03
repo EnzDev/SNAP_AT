@@ -19,17 +19,6 @@ import com.epsi.snap_at.R;
  * create an instance of this fragment.
  */
 public class Card extends Fragment {
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String CARD_ID = "cardId";
-	private static final String CARD_TITLE = "cardTitle";
-	private static final String CARD_COLOR = "cardColor";
-
-	// TODO: Rename and change types of parameters
-	private String cardId;
-	private String cardTitle;
-	private String cardColor;
-
 	private OnFragmentInteractionListener mListener;
 
 	public Card() {
@@ -40,17 +29,12 @@ public class Card extends Fragment {
 	 * Use this factory method to create a new instance of
 	 * this fragment using the provided parameters.
 	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
 	 * @return A new instance of fragment Card.
 	 */
 	// TODO: Rename and change types and number of parameters
-	public static Card newInstance(String cardId, String cardTitle, String cardColor) {
+	public static Card newInstance() {
 		Card fragment = new Card();
 		Bundle args = new Bundle();
-		args.putString(CARD_ID, cardId);
-		args.putString(CARD_TITLE, cardTitle);
-		args.putString(CARD_COLOR, cardColor);
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -59,8 +43,6 @@ public class Card extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (getArguments() != null) {
-			cardId = getArguments().getString(CARD_ID);
-			cardTitle = getArguments().getString(CARD_TITLE);
 		}
 	}
 
