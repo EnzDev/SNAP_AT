@@ -12,4 +12,14 @@
     <string name="emailplaceholder">user.name</string>
     <string name="created">created</string>
     <string name="global">items</string>
+    <string name="client">Client :</string>
+    <string name="desc">Description :</string>
+    <string name="contact">Contact name :</string>
+    <string name="rata">Rate :</string>
+    <string name="location">Location :</string>
+    <string name="success">Success factors :</string>
+    <string name="save">SAVE</string>
+    <string name="share">SHARE</string>
+    <string name="date">Date :</string>
+    <string name="rate">Rate :</string>
 </resources>
