@@ -5,21 +5,13 @@ package com.epsi.snap_at;
  */
 
 public enum StatusID {
-    OPEN(0),
-    WIN(1),
-    LOST(2);
+    OPEN,
+    WIN,
+    LOST;
 
     private int id;
 
     StatusID() {
-	    this(0);
-    }
-
-    StatusID(int i) {
-        this.id = i;
-    }
-
-    public int getId() {
-        return id;
+        this.id = ordinal();
     }
 }
