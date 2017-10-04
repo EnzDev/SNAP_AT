@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.epsi.snap_at">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".SnapAtApplication"
         android:allowBackup="true"
@@ -21,6 +22,8 @@
         <activity android:name=".view.ViewMain">
         </activity>
         <activity android:name=".view.ViewList">
+        </activity>
+        <activity android:name=".view.ViewDetail">
         </activity>
     </application>
 
