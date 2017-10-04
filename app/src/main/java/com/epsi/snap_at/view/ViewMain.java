@@ -1,4 +1,4 @@
-package com.epsi.snap_at;
+package com.epsi.snap_at.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.epsi.snap_at.Card;
+import com.epsi.snap_at.R;
+import com.epsi.snap_at.StatusID;
 import com.epsi.snap_at.adapter.CardViewAdapter;
 
 import java.util.ArrayList;

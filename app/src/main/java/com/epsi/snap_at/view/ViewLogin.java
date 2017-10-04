@@ -1,4 +1,4 @@
-package com.epsi.snap_at;
+package com.epsi.snap_at.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +9,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
+import com.epsi.snap_at.R;
+
 public class ViewLogin extends AppCompatActivity {
 	public static final String PREFS_NAME = "user";
-
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,11 @@ public class ViewLogin extends AppCompatActivity {
 
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		if (!settings.getBoolean("isRegistered", false))
-			settings.edit().putBoolean("isRegistered", false).commit();
+			settings.edit().putBoolean("isRegistered", false).apply();
 		else {
 			startActivity(new Intent(this, ViewMain.class));
 			finish();
 		}
-
 
 		EditText et = (EditText) findViewById(R.id.basemail);
 		et.addTextChangedListener(new TextWatcher() {
@@ -54,8 +54,6 @@ public class ViewLogin extends AppCompatActivity {
 		});
 
 		findViewById(R.id.savemailButton).setOnClickListener(this::saveMail);
-
-
     }
 
 	public void saveMail(View v) {
@@ -66,7 +64,7 @@ public class ViewLogin extends AppCompatActivity {
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putBoolean("isRegistered", true)
 				.putString("user", input.getText().toString())
-				.commit();
+				.apply();
 
 		startActivity(new Intent(this, ViewMain.class));
 		finish();

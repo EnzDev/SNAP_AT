@@ -1,14 +1,15 @@
 package com.epsi.snap_at.holder;
 
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.R;
+import com.epsi.snap_at.view.ViewList;
 
 import java.text.DateFormat;
 
@@ -43,6 +44,9 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
                         .getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, tvDateLast.getResources().getConfiguration().locale)
                         .format(card.getDateLast().getTime()));
 
-        itemView.findViewById(R.id.card).setOnClickListener(v -> Toast.makeText(v.getContext(), card.getTitle(), Toast.LENGTH_SHORT).show());
+	    Intent it = new Intent(itemView.getContext(), ViewList.class);
+
+        itemView.findViewById(R.id.card).setOnClickListener(
+                v -> v.getContext().startActivity(it));
     }
 }

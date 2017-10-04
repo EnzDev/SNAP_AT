@@ -11,8 +11,12 @@ public enum StatusID {
 
     private int id;
 
+    StatusID() {
+	    this(0);
+    }
+
     StatusID(int i) {
-        this.id = 1;
+        this.id = i;
     }
 
     public int getId() {

@@ -36,7 +36,7 @@ public class Card {
 				this.color = context.getResources().getColor(R.color.lost);
 				break;
 			default:
-				this.title = "";
+				this.title = "Default";
 				this.color = context.getResources().getColor(android.R.color.transparent);
 		}
 	}
