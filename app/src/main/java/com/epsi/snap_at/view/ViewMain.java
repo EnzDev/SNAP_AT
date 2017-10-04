@@ -8,10 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.epsi.snap_at.Card;
 import com.epsi.snap_at.R;
+import com.epsi.snap_at.Status;
 import com.epsi.snap_at.StatusID;
-import com.epsi.snap_at.adapter.CardViewAdapter;
+import com.epsi.snap_at.adapter.StatusViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +21,7 @@ import java.util.List;
 public class ViewMain extends AppCompatActivity {
 
     private RecyclerView rv;
-    private List<Card> cards = new ArrayList<>();
+    private List<Status> statuses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ViewMain extends AppCompatActivity {
 
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new CardViewAdapter(cards));
+        rv.setAdapter(new StatusViewAdapter(statuses));
     }
 
     @Override
@@ -58,9 +58,9 @@ public class ViewMain extends AppCompatActivity {
     }
 
     private void addCards() {
-        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.OPEN, this));
-        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.WIN, this));
-        cards.add(new Card(0, 0, Calendar.getInstance(), StatusID.LOST, this));
+        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.OPEN, this));
+        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.WIN, this));
+        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.LOST, this));
     }
 
     private void add() {
