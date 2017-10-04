@@ -5,8 +5,8 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.epsi.snap_at"
-        minSdkVersion 19
-        targetSdkVersion 25
+        minSdkVersion 24
+        targetSdkVersion 24
         jackOptions {
             enabled true
         }

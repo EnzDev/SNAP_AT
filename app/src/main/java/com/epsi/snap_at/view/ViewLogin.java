@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.epsi.snap_at.R;
+import com.epsi.snap_at.SnapAtApplication;
 
 public class ViewLogin extends AppCompatActivity {
-	public static final String PREFS_NAME = "user";
-
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -23,7 +22,7 @@ public class ViewLogin extends AppCompatActivity {
 		// status bar is hidden, so hide that too if necessary.
 	    getSupportActionBar().hide();
 
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+		SharedPreferences settings = ((SnapAtApplication) getApplication()).getSetting();
 		if (!settings.getBoolean("isRegistered", false))
 			settings.edit().putBoolean("isRegistered", false).apply();
 		else {
@@ -57,7 +56,7 @@ public class ViewLogin extends AppCompatActivity {
     }
 
 	public void saveMail(View v) {
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+		SharedPreferences settings = ((SnapAtApplication) getApplication()).getSetting();
 
 		EditText input = ((EditText) ((View) v.getParent()).findViewById(R.id.basemail));
 

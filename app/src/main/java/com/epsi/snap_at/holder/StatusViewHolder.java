@@ -2,6 +2,7 @@ package com.epsi.snap_at.holder;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -43,7 +44,7 @@ public class StatusViewHolder extends RecyclerView.ViewHolder {
                         .format(status.getDateLast().getTime()));
 
 	    Intent it = new Intent(itemView.getContext(), ViewList.class);
-
+        it.putExtra("status", status.getStatusId());
         itemView.findViewById(R.id.status).setOnClickListener(
                 v -> v.getContext().startActivity(it));
     }

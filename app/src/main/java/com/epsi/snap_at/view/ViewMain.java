@@ -8,7 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.epsi.snap_at.Card;
+import com.epsi.snap_at.Notifier;
 import com.epsi.snap_at.R;
+import com.epsi.snap_at.SnapAtApplication;
 import com.epsi.snap_at.Status;
 import com.epsi.snap_at.StatusID;
 import com.epsi.snap_at.adapter.StatusViewAdapter;
@@ -16,6 +19,8 @@ import com.epsi.snap_at.adapter.StatusViewAdapter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
+import java.util.function.BinaryOperator;
 
 
 public class ViewMain extends AppCompatActivity {
@@ -27,12 +32,12 @@ public class ViewMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_main);
-
-        addStatuses();
+        StatusViewAdapter statusadapter = new StatusViewAdapter(statuses);
+        addStatuses(statusadapter);
 
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new StatusViewAdapter(statuses));
+        rv.setAdapter(statusadapter);
     }
 
     @Override
@@ -57,10 +62,62 @@ public class ViewMain extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void addStatuses() {
-        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.OPEN, this));
-        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.WIN, this));
-        statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.LOST, this));
+    private void addStatuses(StatusViewAdapter statusadapter) {
+        Set<Card> openNumber = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                (c) -> c.getStatus() == StatusID.OPEN
+        );
+        Set<Card> winNumber = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                (c) -> c.getStatus() == StatusID.WIN
+        );
+        Set<Card> lostNumber = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                (c) -> c.getStatus() == StatusID.LOST
+        );
+
+        statuses.add(new Status(openNumber.size(),
+                (int) openNumber.stream().filter(
+                        c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                ).count(),
+                openNumber.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.OPEN, this));
+        statuses.add(new Status(winNumber.size(),
+                (int) winNumber.stream().filter(
+                        c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                ).count(),
+                winNumber.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.WIN, this));
+        statuses.add(new Status(lostNumber.size(),
+                (int) lostNumber.stream().filter(
+                        c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                ).count(),
+                lostNumber.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.LOST, this));
+
+
+        Notifier.todos.add(() -> {
+            Set<Card> openNumberR = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                    (c) -> c.getStatus() == StatusID.OPEN
+            );
+            Set<Card> winNumberR = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                    (c) -> c.getStatus() == StatusID.WIN
+            );
+            Set<Card> lostNumberR = ((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
+                    (c) -> c.getStatus() == StatusID.LOST
+            );
+            statuses.clear();
+            statuses.add(new Status(openNumberR.size(),
+                    (int) openNumberR.stream().filter(
+                            c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                    ).count(),
+                    openNumberR.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.OPEN, this));
+            statuses.add(new Status(winNumberR.size(),
+                    (int) winNumberR.stream().filter(
+                            c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                    ).count(),
+                    winNumberR.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.WIN, this));
+            statuses.add(new Status(lostNumberR.size(),
+                    (int) lostNumberR.stream().filter(
+                            c -> c.getContactName().equals(((SnapAtApplication) getApplication()).getSetting().getString("user", ""))
+                    ).count(),
+                    lostNumberR.stream().reduce(BinaryOperator.maxBy((a, b) -> a.getDate().compareTo(b.getDate()))).map(Card::getDate).orElse(Calendar.getInstance()), StatusID.LOST, this));
+            runOnUiThread(statusadapter::notifyDataSetChanged);
+        });
     }
 
     private void add() {

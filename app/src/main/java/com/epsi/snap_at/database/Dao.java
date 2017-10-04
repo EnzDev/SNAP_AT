@@ -11,6 +11,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -29,6 +32,7 @@ public class Dao {
     public static final String START_AT = "StartAt";
     public static final String LOCATION = "Location";
     public static final String CONSULTANTS = "Consultants";
+    public static final String DATE = "Created";
 
     private Connection con;
 
@@ -45,11 +49,14 @@ public class Dao {
         }
     }
 
-    public List<Card> getDatabaseCard(Context originContext) throws SQLException {
+    public HashSet<Card> getDatabaseCard(Context originContext) throws SQLException {
         ResultSet result = this.con.prepareStatement("SELECT * FROM snappat").executeQuery();
-        List<Card> cards = new ArrayList<>();
-
+        HashSet<Card> cards = new HashSet<>();
         while (result.next()) {
+
+            Calendar date = Calendar.getInstance();
+            date.setTimeInMillis(result.getTimestamp(DATE) != null ? result.getTimestamp(DATE).getTime() : new Date().getTime());
+
             cards.add(new Card(
                     StatusID.values()[result.getInt(STATUS)],
                     result.getString(TITLE),
@@ -63,9 +70,17 @@ public class Dao {
                     new Location(result.getString(LOCATION)),
                     null,
                     result.getString(CONSULTANTS),
+                    date,
                     originContext));
         }
-
         return cards;
+    }
+
+    public boolean isClosed() {
+        try {
+            return con == null || con.isClosed();
+        } catch (SQLException e) {
+            return true;
+        }
     }
 }

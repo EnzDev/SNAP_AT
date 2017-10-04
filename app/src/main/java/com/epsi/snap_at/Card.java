@@ -28,8 +28,8 @@ public class Card {
 
 	public Card(StatusID status, String title, String desc, String client, String contactName
 			, float rate, String successFactor, float duration, Date startLatest, Location location
-			, File descFile, String consultName, Context context) {
-		this.date = Calendar.getInstance();
+			, File descFile, String consultName, Calendar date, Context context) {
+		this.date = date;
 		this.title = title;
 		this.status = status;
 		this.desc = desc;
@@ -146,5 +146,44 @@ public class Card {
 
 	public void setConsultName(String consultName) {
 		this.consultName = consultName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Card card = (Card) o;
+
+		if (Float.compare(card.rate, rate) != 0) return false;
+		if (Float.compare(card.duration, duration) != 0) return false;
+		if (status != card.status) return false;
+		if (!title.equals(card.title)) return false;
+		if (!desc.equals(card.desc)) return false;
+		if (!client.equals(card.client)) return false;
+		if (!contactName.equals(card.contactName)) return false;
+		if (!successFactor.equals(card.successFactor)) return false;
+		if (!startLatest.equals(card.startLatest)) return false;
+		if (descFile != null ? !descFile.equals(card.descFile) : card.descFile != null)
+			return false;
+		return consultName.equals(card.consultName);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = status.hashCode();
+		result = 31 * result + title.hashCode();
+		result = 31 * result + desc.hashCode();
+		result = 31 * result + client.hashCode();
+		result = 31 * result + contactName.hashCode();
+		result = 31 * result + (rate != +0.0f ? Float.floatToIntBits(rate) : 0);
+		result = 31 * result + successFactor.hashCode();
+		result = 31 * result + (duration != +0.0f ? Float.floatToIntBits(duration) : 0);
+		result = 31 * result + startLatest.hashCode();
+		result = 31 * result + (descFile != null ? descFile.hashCode() : 0);
+		result = 31 * result + consultName.hashCode();
+
+		return result;
 	}
 }
