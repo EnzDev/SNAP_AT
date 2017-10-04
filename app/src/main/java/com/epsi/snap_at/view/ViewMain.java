@@ -28,7 +28,7 @@ public class ViewMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_main);
 
-        addCards();
+        addStatuses();
 
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -57,7 +57,7 @@ public class ViewMain extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void addCards() {
+    private void addStatuses() {
         statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.OPEN, this));
         statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.WIN, this));
         statuses.add(new Status(0, 0, Calendar.getInstance(), StatusID.LOST, this));
