@@ -16,7 +16,7 @@ import java.text.DateFormat;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 	private TextView tvCardTitle;
-	private Drawable statusID;
+	private Drawable drawableStatus;
 	private TextView date;
 	private TextView location;
 
@@ -24,7 +24,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 		super(itemView);
 
 		tvCardTitle = (TextView) itemView.findViewById(R.id.card_title);
-		statusID = itemView.findViewById(R.id.card_status).getBackground();
+		drawableStatus = itemView.findViewById(R.id.card_status).getBackground();
 		date = ((TextView) itemView.findViewById(R.id.card_date));
 		location = ((TextView) itemView.findViewById(R.id.card_location));
 	}
@@ -35,15 +35,17 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
 		switch (card.getStatus()) {
 			case OPEN:
-				statusID = itemView.getResources().getDrawable(R.drawable.card_bubble_open);
+				drawableStatus = itemView.getResources().getDrawable(R.drawable.card_bubble_open);
 				break;
 			case WIN:
-				statusID = itemView.getResources().getDrawable(R.drawable.card_bubble_win);
+				drawableStatus = itemView.getResources().getDrawable(R.drawable.card_bubble_win);
 				break;
 			case LOST:
-				statusID = itemView.getResources().getDrawable(R.drawable.card_bubble_lost);
+				drawableStatus = itemView.getResources().getDrawable(R.drawable.card_bubble_lost);
 				break;
 		}
+
+		itemView.findViewById(R.id.card_status).setBackground(drawableStatus);
 
 		date.setText(DateFormat
 				.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, itemView.getResources().getConfiguration().locale)
