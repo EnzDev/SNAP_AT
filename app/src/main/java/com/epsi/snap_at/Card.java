@@ -4,7 +4,7 @@ import android.content.Context;
 import android.location.Location;
 
 import java.io.File;
-import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,13 +12,13 @@ import java.util.Date;
  */
 
 public class Card {
-	private DateFormat date;
+	private Calendar date;
 	private StatusID status;
-	private String titre;
+	private String title;
 	private String desc;
 	private String client;
 	private String contactName;
-	private float prix;
+	private float rate;
 	private String successFactor;
 	private float duration;
 	private Date startLatest;
@@ -26,14 +26,16 @@ public class Card {
 	private File descFile;
 	private String consultName;
 
-	public Card(StatusID status, String titre, String desc, String client, String contactName, float prix, String successFactor, float duration, Date startLatest, Location location, File descFile, String consultName, Context context) {
-		this.date = DateFormat
-				.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, context.getResources().getConfiguration().locale);
-		this.titre = titre;
+	public Card(StatusID status, String title, String desc, String client, String contactName
+			, float rate, String successFactor, float duration, Date startLatest, Location location
+			, File descFile, String consultName, Context context) {
+		this.date = Calendar.getInstance();
+		this.title = title;
+		this.status = status;
 		this.desc = desc;
 		this.client = client;
 		this.contactName = contactName;
-		this.prix = prix;
+		this.rate = rate;
 		this.successFactor = successFactor;
 		this.duration = duration;
 		this.startLatest = startLatest;
@@ -42,20 +44,28 @@ public class Card {
 		this.consultName = consultName;
 	}
 
-	public DateFormat getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
-	public void setDate(DateFormat date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public StatusID getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusID status) {
+		this.status = status;
 	}
 
 	public String getDesc() {
@@ -82,12 +92,12 @@ public class Card {
 		this.contactName = contactName;
 	}
 
-	public float getPrix() {
-		return prix;
+	public float getRate() {
+		return rate;
 	}
 
-	public void setPrix(float prix) {
-		this.prix = prix;
+	public void setRate(float rate) {
+		this.rate = rate;
 	}
 
 	public String getSuccessFactor() {

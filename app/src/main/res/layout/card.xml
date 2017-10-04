@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/green"
+    app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp">
 
@@ -29,7 +29,7 @@
             android:background="@android:color/transparent"
             android:text="@string/app_name"
             android:textAppearance="@android:style/TextAppearance.Holo.Large"
-            android:textColor="@color/light"
+            android:textColor="@color/black"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -37,7 +37,7 @@
 
         <View
             android:id="@+id/card_status"
-            android:background="@drawable/card_bubble"
+            android:background="@drawable/card_bubble_open"
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:layout_constraintLeft_toRightOf="@+id/card_title"
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:textColor="@color/light"
+            android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_title" />
 
@@ -73,7 +73,7 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:textColor="@color/light"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_client"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:textColor="@color/light"
+            android:textColor="@color/black"
             app:layout_constraintLeft_toRightOf="@+id/card_date"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
