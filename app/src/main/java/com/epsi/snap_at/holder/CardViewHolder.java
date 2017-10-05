@@ -11,6 +11,9 @@ import com.epsi.snap_at.R;
 import com.epsi.snap_at.view.ViewDetail;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Ptit-Biscuit on 04/10/2017.
@@ -59,7 +62,15 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
 		location.setText(card.getLocation().getProvider());
 
+		/*ArrayList<String> data = new ArrayList<>();
+		data.add(tvCardTitle.getText().toString());
+		data.add(drawableStatus.toString());
+		data.add(client.getText().toString());
+		data.add(date.getText().toString());
+		data.add(location.getText().toString());*/
+
 		Intent it = new Intent(itemView.getContext(), ViewDetail.class);
+		//it.putStringArrayListExtra("data", data);
 
 		itemView.findViewById(R.id.card).setOnClickListener(
 				v -> v.getContext().startActivity(it));

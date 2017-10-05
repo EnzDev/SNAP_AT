@@ -13,11 +13,13 @@
     <string name="created">créé(s)</string>
     <string name="global">élément(s)</string>
     <string name="client">Client :</string>
-    <string name="date">Date :</string>
+    <string name="dateLatest">Débute (au plus tard) :</string>
     <string name="contact">Nom du contact:</string>
     <string name="location">Position :</string>
     <string name="success">Facteurs de succès :</string>
     <string name="rate">Prix :</string>
     <string name="save">Sauvegarder</string>
     <string name="share">Partager</string>
+    <string name="consultant">Consultants :</string>
+    <string name="duree">Durée en mois et jour/semaine :</string>
 </resources>
