@@ -20,11 +20,17 @@ public class ViewDetail extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_detail);
-
-		//findViewById(R.id.card_detail_save).setOnClickListener(this::onSaveClick);
 
 		if (getIntent().getBooleanExtra("add", false)) {
+			setContentView(R.layout.activity_view_detail_modif);
+			findViewById(R.id.card_detail_save).setOnClickListener(this::onSaveClick);
+		} else {
+			setContentView(R.layout.activity_view_detail);
+
 		}
+	}
+
+	private void onSaveClick(View view) {
+
 	}
 }

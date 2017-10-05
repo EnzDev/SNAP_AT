@@ -1,8 +1,5 @@
 package com.epsi.snap_at.view;
 
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,14 +7,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.Notifier;
-import com.epsi.snap_at.SnapAtApplication;
-import com.epsi.snap_at.StatusID;
-import com.epsi.snap_at.database.Dao;
 import com.epsi.snap_at.R;
+import com.epsi.snap_at.SnapAtApplication;
 import com.epsi.snap_at.adapter.CardViewAdapter;
-import com.epsi.snap_at.database.DatabaseHandler;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +32,7 @@ public class ViewList extends AppCompatActivity {
         cards.addAll(((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
                 (c) -> c.getStatus() == getIntent().getSerializableExtra("status")
         ));
+        cards.sort((a, b) -> b.getDate().compareTo(a.getDate()));
 
         crv = (RecyclerView) findViewById(R.id.recyclerView);
         crv.setLayoutManager(new LinearLayoutManager(this));
@@ -50,6 +44,7 @@ public class ViewList extends AppCompatActivity {
             cards.addAll(((SnapAtApplication) getApplication()).getHandler().getBaseWithCondition(
                     (c) -> c.getStatus() == getIntent().getSerializableExtra("status")
             ));
+            cards.sort((a, b) -> b.getDate().compareTo(a.getDate()));
             runOnUiThread(adapter::notifyDataSetChanged);
         });
     }

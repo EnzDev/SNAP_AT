@@ -123,7 +123,11 @@ public class ViewMain extends AppCompatActivity {
         });
     }
 
-    private void add() {}
+    private void add() {
+        Intent iten = new Intent(this, ViewDetail.class);
+        iten.putExtra("add", true);
+        startActivityForResult(iten, 42);
+    }
 
     private void search() {
         Toast.makeText(this, "recherche", Toast.LENGTH_SHORT).show();
