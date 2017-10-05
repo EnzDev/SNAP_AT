@@ -36,17 +36,35 @@ public class Dao {
 
     private Connection con;
 
-    public Dao() {
+    public Dao() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        try {
-            this.con = DriverManager.getConnection("jdbc:mysql://keken.fr:3306/snapat?user=ro_user&password=");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        this.con = DriverManager.getConnection("jdbc:mysql://keken.fr:3306/snapat?user=ro_user&password=");
+
+    }
+
+    public boolean addCardToDatabase(Card c) throws SQLException {
+        return this.con.prepareStatement("INSERT INTO snappat " +
+                "(`Date`, `Client`, `ContactName`, `Title`, `FullDescription`, " +
+                "`Succes`, `StartAt`, `Duration`, `Location`, `Rate`, `DescriptionFile`, " +
+                "`Consultants`, `Status`, `Created`, `id`) VALUES " +
+                "(CURRENT_DATE(), "
+                + c.getClient() + ", "
+                + c.getContactName() + ", "
+                + c.getTitle() + ", "
+                + c.getDesc() + ", "
+                + c.getSuccessFactor() + ", DATE("
+                + c.getStartLatest() + "), "
+                + c.getDuration() + ", "
+                + c.getLocation().getProvider() + ", "
+                + c.getRate() + ", "
+                + ", ' ' "
+                + c.getConsultName() + ", "
+                + c.getStatus().ordinal() + ", CURRENT_TIMESTAMP, NULL)").execute();
     }
 
     public HashSet<Card> getDatabaseCard(Context originContext) throws SQLException {

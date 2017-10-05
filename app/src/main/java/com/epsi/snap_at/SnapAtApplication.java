@@ -6,6 +6,7 @@ package com.epsi.snap_at;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.epsi.snap_at.database.DatabaseHandler;
 
@@ -32,5 +33,11 @@ public class SnapAtApplication extends Application {
 
     public SharedPreferences getSetting() {
         return setting;
+    }
+
+    @Override
+    public void onTerminate() {
+        Toast.makeText(this, "Exited", Toast.LENGTH_SHORT).show();
+        super.onTerminate();
     }
 }
