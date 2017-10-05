@@ -1,5 +1,7 @@
 package com.epsi.snap_at.view;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import com.epsi.snap_at.SnapAtApplication;
 import com.epsi.snap_at.Status;
 import com.epsi.snap_at.StatusID;
 import com.epsi.snap_at.adapter.StatusViewAdapter;
+import com.epsi.snap_at.database.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -120,11 +123,21 @@ public class ViewMain extends AppCompatActivity {
         });
     }
 
-    private void add() {
-        Toast.makeText(this, "ajout d'une fiche client", Toast.LENGTH_SHORT).show();
-    }
+    private void add() {}
 
     private void search() {
         Toast.makeText(this, "recherche", Toast.LENGTH_SHORT).show();
     }
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 42) {
+			if(resultCode == Activity.RESULT_OK){
+				String result = data.getStringExtra("result");
+			}
+			if (resultCode == Activity.RESULT_CANCELED) {
+				//Write your code if there's no result
+			}
+		}
+	}
 }
