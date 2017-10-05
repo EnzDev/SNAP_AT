@@ -3,23 +3,23 @@
     <string name="domgfi">\@gfi.fr</string>
     <string name="go">SUIVANT</string>
     <string name="loginLabel">Entrez votre adresse mail:</string>
-    <string name="action_search">search</string>
-    <string name="action_add">add</string>
+    <string name="action_search">Chercher</string>
+    <string name="action_add">Ajouter</string>
     <string name="openLabel">Open</string>
     <string name="lostLabel">Lost</string>
     <string name="winLabel">Win</string>
 
-    <string name="emailplaceholder">user.name</string>
-    <string name="created">created</string>
-    <string name="global">items</string>
+    <string name="emailplaceholder">nom.utilisateur</string>
+    <string name="created">créé(s)</string>
+    <string name="global">élément(s)</string>
     <string name="client">Client :</string>
-    <string name="desc">Description :</string>
-    <string name="contact">Contact name :</string>
-    <string name="rata">Rate :</string>
-    <string name="location">Location :</string>
-    <string name="success">Success factors :</string>
-    <string name="save">SAVE</string>
-    <string name="share">SHARE</string>
-    <string name="date">Date :</string>
-    <string name="rate">Rate :</string>
+    <string name="dateLatest">Débute (au plus tard) :</string>
+    <string name="contact">Nom du contact:</string>
+    <string name="location">Position :</string>
+    <string name="success">Facteurs de succès :</string>
+    <string name="rate">Prix :</string>
+    <string name="save">Sauvegarder</string>
+    <string name="share">Partager</string>
+    <string name="consultant">Consultants :</string>
+    <string name="duree">Durée en mois et jour/semaine :</string>
 </resources>
