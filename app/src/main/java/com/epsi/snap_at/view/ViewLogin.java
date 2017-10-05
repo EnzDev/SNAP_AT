@@ -60,12 +60,14 @@ public class ViewLogin extends AppCompatActivity {
 
 		EditText input = ((EditText) ((View) v.getParent()).findViewById(R.id.basemail));
 
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putBoolean("isRegistered", true)
-				.putString("user", input.getText().toString())
-				.apply();
+		if (!input.getText().toString().isEmpty()) {
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putBoolean("isRegistered", true)
+					.putString("user", input.getText().toString())
+					.apply();
 
-		startActivity(new Intent(this, ViewMain.class));
-		finish();
+			startActivity(new Intent(this, ViewMain.class));
+			finish();
+		}
 	}
 }
