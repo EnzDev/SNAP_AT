@@ -20,6 +20,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 	private TextView tvCardTitle;
 	private Drawable drawableStatus;
 	private TextView date;
+	private TextView client;
 	private TextView location;
 
 	public CardViewHolder(View itemView) {
@@ -28,6 +29,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 		tvCardTitle = (TextView) itemView.findViewById(R.id.card_title);
 		drawableStatus = itemView.findViewById(R.id.card_status).getBackground();
 		date = ((TextView) itemView.findViewById(R.id.card_date));
+		client = ((TextView) itemView.findViewById(R.id.card_client));
 		location = ((TextView) itemView.findViewById(R.id.card_location));
 	}
 
@@ -48,6 +50,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 		}
 
 		itemView.findViewById(R.id.card_status).setBackground(drawableStatus);
+
+		client.setText(card.getClient());
 
 		date.setText(DateFormat
 				.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, itemView.getResources().getConfiguration().locale)
