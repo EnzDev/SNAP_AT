@@ -2,6 +2,7 @@ package com.epsi.snap_at.database;
 
 import android.content.Context;
 import android.location.Location;
+import android.util.Log;
 
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.StatusID;
@@ -43,28 +44,30 @@ public class Dao {
             e.printStackTrace();
         }
 
-        this.con = DriverManager.getConnection("jdbc:mysql://keken.fr:3306/snapat?user=ro_user&password=");
+        this.con = DriverManager.getConnection("jdbc:mysql://keken.fr:3306/snapat?user=rw_user&password=VvyAOI49hNhDmqXp");
 
     }
 
     public boolean addCardToDatabase(Card c) throws SQLException {
-        return this.con.prepareStatement("INSERT INTO snappat " +
+        String x = "INSERT INTO snappat " +
                 "(`Date`, `Client`, `ContactName`, `Title`, `FullDescription`, " +
                 "`Succes`, `StartAt`, `Duration`, `Location`, `Rate`, `DescriptionFile`, " +
                 "`Consultants`, `Status`, `Created`, `id`) VALUES " +
-                "(CURRENT_DATE(), "
-                + c.getClient() + ", "
-                + c.getContactName() + ", "
-                + c.getTitle() + ", "
-                + c.getDesc() + ", "
-                + c.getSuccessFactor() + ", DATE("
-                + c.getStartLatest() + "), "
-                + c.getDuration() + ", "
-                + c.getLocation().getProvider() + ", "
-                + c.getRate() + ", "
-                + ", ' ' "
-                + c.getConsultName() + ", "
-                + c.getStatus().ordinal() + ", CURRENT_TIMESTAMP, NULL)").execute();
+                "(CURRENT_DATE(), '"
+                + c.getClient() + "', '"
+                + c.getContactName() + "', '"
+                + c.getTitle() + "', '"
+                + c.getDesc() + "', '"
+                + c.getSuccessFactor() + "', DATE('"
+                + c.getStartLatest() + "'), '"
+                + c.getDuration() + "', '"
+                + c.getLocation().getProvider() + "', '"
+                + c.getRate()
+                + "', '' ,'"
+                + c.getConsultName() + "', '"
+                + c.getStatus().ordinal() + "', CURRENT_TIMESTAMP, NULL)";
+        Log.e("EEE", x);
+        return this.con.prepareStatement(x).execute();
     }
 
     public HashSet<Card> getDatabaseCard(Context originContext) throws SQLException {

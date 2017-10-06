@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -66,8 +66,8 @@
                         android:hint="@string/title"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textColorHint="@color/black"/>
+                        android:textColorHint="@color/black"
+                        android:textSize="18sp" />
 
                     <View
                         android:id="@+id/card_detail_status"
@@ -81,9 +81,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:hint="@string/desc"
                         android:maxLines="3"
                         android:minHeight="60dp"
-                        android:hint="@string/desc"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"/>
@@ -125,10 +125,10 @@
                         android:layout_columnWeight="1"
                         android:layout_gravity="fill"
                         android:layout_row="1"
-                        android:textSize="16sp"
                         android:hint="@string/client_modif"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                     <android.support.v4.widget.Space
                         android:layout_height="5dp"
@@ -157,8 +157,8 @@
                         android:layout_gravity="fill"
                         android:layout_row="5"
                         android:hint="@string/dateLatest_modif"
-                        android:textColor="@color/black"
                         android:inputType="date"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"/>
 
@@ -181,10 +181,10 @@
                         android:layout_columnWeight="1"
                         android:layout_gravity="fill"
                         android:layout_row="1"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
                         android:hint="@string/contact_modif"
-                        android:textColorHint="@color/black"/>
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp" />
 
                     <android.support.v4.widget.Space
                         android:layout_height="5dp"
@@ -212,10 +212,10 @@
                         android:layout_columnWeight="1"
                         android:layout_gravity="fill"
                         android:layout_row="5"
-                        android:textSize="16sp"
                         android:hint="@string/location_modif"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                 </GridLayout>
 
@@ -244,27 +244,28 @@
                         android:layout_height="8dp"/>
 
                     <EditText
-                        android:id="@+id/textView2"
+                        android:id="@+id/card_detail_duration"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:inputType="number"
                         android:hint="@string/duree_modif"
+                        android:inputType="number"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                     <android.support.v4.widget.Space
                         android:layout_width="267dp"
                         android:layout_height="8dp"/>
 
                     <EditText
+                        android:id="@+id/card_detail_duration2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:inputType="number"
                         android:hint="@string/duree_modif2"
+                        android:inputType="number"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -298,14 +299,14 @@
                         android:id="@+id/card_detail_success"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/success_modif"
                         android:maxLines="3"
                         android:minHeight="60dp"
                         android:scrollbarSize="3dp"
                         android:scrollbars="horizontal"
-                        android:textSize="16sp"
-                        android:hint="@string/success_modif"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -337,28 +338,28 @@
                         android:id="@+id/card_detail_consultant"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:hint="@string/consultant_modif"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     android:weightSum="1"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayout4"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    tools:layout_editor_absoluteY="440dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp">
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout4"
+                    tools:layout_editor_absoluteY="440dp">
 
                     <TextView
                         android:id="@+id/textView8"
@@ -375,11 +376,11 @@
                         android:id="@+id/card_detail_rate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:inputType="number"
                         android:hint="@string/rate_modif"
+                        android:inputType="number"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textColor="@color/black"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -394,15 +395,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.0">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <Button
             android:id="@+id/card_detail_save"

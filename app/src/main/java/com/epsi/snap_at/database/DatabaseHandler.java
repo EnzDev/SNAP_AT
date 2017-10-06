@@ -24,7 +24,7 @@ public class DatabaseHandler {
     private Context context;
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private Runnable mStatusChecker;
-    private int UPDATE_INTERVAL = 10000;
+    private int UPDATE_INTERVAL = 3000;
     private volatile HashSet<Card> cardBase = new HashSet<>();
 
     Runnable sync = () -> {
@@ -37,6 +37,7 @@ public class DatabaseHandler {
         }
     };
 
+
     public DatabaseHandler(Context context) {
         this.context = context;
         ldao = new LocalDao(context);
@@ -46,7 +47,6 @@ public class DatabaseHandler {
                 if (dao == null || dao.isClosed())
                     try {
                         dao = new Dao();
-
                     } catch (SQLException ignored) {
                     } finally {
                         // Run the passed runnable
@@ -83,5 +83,13 @@ public class DatabaseHandler {
         HashSet<Card> t = new HashSet<>();
         t.addAll(cardBase);
         return t.stream().filter(condition).collect(Collectors.toSet());
+    }
+
+    public void addNewCard(Card card) {
+        try {
+            dao.addCardToDatabase(card);
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle offline
+        }
     }
 }

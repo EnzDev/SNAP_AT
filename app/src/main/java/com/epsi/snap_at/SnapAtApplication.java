@@ -12,8 +12,8 @@ import com.epsi.snap_at.database.DatabaseHandler;
 
 
 public class SnapAtApplication extends Application {
-    public static Card card;
     public static final String PREFS_NAME = "user";
+    public static Card card;
     private DatabaseHandler handler;
     private SharedPreferences setting;
 
@@ -41,4 +41,8 @@ public class SnapAtApplication extends Application {
         Toast.makeText(this, "Exited", Toast.LENGTH_SHORT).show();
         super.onTerminate();
     }*/
+
+    public void addNewCard(Card card) {
+        new Thread(() -> handler.addNewCard(card)).start();
+    }
 }

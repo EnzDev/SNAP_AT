@@ -1,13 +1,21 @@
 package com.epsi.snap_at.view;
 
+// workshopb3.1718@gmail.com
+
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.epsi.snap_at.Card;
 import com.epsi.snap_at.R;
 import com.epsi.snap_at.SnapAtApplication;
+import com.epsi.snap_at.StatusID;
+
+import java.sql.Date;
+import java.util.Calendar;
 
 public class ViewDetail extends AppCompatActivity {
 	@Override
@@ -53,6 +61,33 @@ public class ViewDetail extends AppCompatActivity {
 	}
 
 	private void onSaveClick(View view) {
+		View vc = ((View) view.getParent().getParent()).findViewById(R.id.card_detail);
 
+		EditText title = (EditText) vc.findViewById(R.id.card_detail_title);
+		EditText client = (EditText) vc.findViewById(R.id.card_detail_client);
+		EditText consultant = (EditText) vc.findViewById(R.id.card_detail_consultant);
+		EditText contact = (EditText) vc.findViewById(R.id.card_detail_contact);
+		EditText date = (EditText) vc.findViewById(R.id.card_detail_date);
+		EditText desc = (EditText) vc.findViewById(R.id.card_detail_desc);
+		EditText duration = (EditText) vc.findViewById(R.id.card_detail_duration);
+		EditText location = (EditText) vc.findViewById(R.id.card_detail_location);
+		EditText rate = (EditText) vc.findViewById(R.id.card_detail_rate);
+		EditText success = (EditText) vc.findViewById(R.id.card_detail_success);
+
+		Card card = new Card(StatusID.OPEN, title.getText().toString(),
+				desc.getText().toString(),
+				client.getText().toString(),
+				contact.getText().toString(),
+				Float.parseFloat(rate.getText().toString()),
+				success.getText().toString(),
+				Float.parseFloat(duration.getText().toString()),
+				new Date(Date.parse(date.getText().toString())),
+				new Location(location.getText().toString()),
+				null, consultant.getText().toString(),
+				Calendar.getInstance(), getBaseContext());
+		((SnapAtApplication) getApplication()).addNewCard(card);
+
+		setResult(1);
+		finish();
 	}
 }
